@@ -9,10 +9,9 @@ import SearchBar from "./SearchBar";
 
 class App extends React.Component {
   render() {
-    console.log(this.props);
     return (
       <div className="app">
-        <SearchBar onFormSubmit="this.props.searchFilms(title)" />
+        <SearchBar />
         <div className="app__content">
           {this.props.pending && <Loader />}
           {this.props.error && <ErrorMessage message={this.props.error} />}
