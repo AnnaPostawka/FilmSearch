@@ -1,15 +1,22 @@
 import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import fetchFilms from "../../services/fetchFilms";
+import fetchFilms from "../../redux/services/fetchFilms";
 import "./SearchBar.css";
+import { SORT_BY } from "../../utils";
 
 class SearchBar extends React.Component {
-  state = { term: "" };
+  state = { term: "", sortBy: SORT_BY.TITLE };
 
   onInputChange = event => {
     this.setState({ term: event.target.value }, () => {
-      this.props.searchFilms(this.state.term);
+      this.props.searchFilms(this.state.term, this.state.sortBy);
+    });
+  };
+
+  onRadioChange = event => {
+    this.setState({ sortBy: event.target.value }, () => {
+      this.props.searchFilms(this.state.term, this.state.sortBy);
     });
   };
 
@@ -27,6 +34,26 @@ class SearchBar extends React.Component {
             type="text"
             value={this.state.term}
             onChange={this.onInputChange}
+          ></input>
+        </form>
+        <form>
+          <p>Sort results by: </p>
+          <label htmlFor="title">Title</label>
+          <input
+            type="radio"
+            name="sortBy"
+            id="title"
+            value={SORT_BY.TITLE}
+            defaultChecked
+            onChange={this.onRadioChange}
+          ></input>
+          <label htmlFor="year">Year</label>
+          <input
+            type="radio"
+            name="sortBy"
+            id="year"
+            value={SORT_BY.YEAR}
+            onChange={this.onRadioChange}
           ></input>
         </form>
       </div>

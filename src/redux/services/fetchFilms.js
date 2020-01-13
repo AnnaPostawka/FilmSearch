@@ -3,8 +3,9 @@ import {
   fetchFilmsSuccess,
   fetchFilmsError
 } from "../actions";
+import { sortFilms } from "../../utils";
 
-export default function searchFilms(title) {
+export default function searchFilms(title, sortBy) {
   return dispatch => {
     dispatch(fetchFilmsPending());
     fetch(`http://www.omdbapi.com/?s=${title}&apikey=a88f46da`)
@@ -15,7 +16,9 @@ export default function searchFilms(title) {
           throw error;
         }
 
-        dispatch(fetchFilmsSuccess(res.Search));
+        const sortedFilms = sortFilms(sortBy, res.Search);
+
+        dispatch(fetchFilmsSuccess(sortedFilms));
       })
       .catch(error => {
         dispatch(fetchFilmsError(error.message));
