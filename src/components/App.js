@@ -1,9 +1,13 @@
 import React from "react";
-import Search from "./Search";
 import "./App.css";
 import { connect } from "react-redux";
 import fetchFilms from "../services/fetchFilms";
 import { bindActionCreators } from "redux";
+
+import { ErrorMessage } from "./ErrorMessage";
+import FilmsList from "./FilmsList";
+import Loader from "./Loader";
+import SearchBar from "./SearchBar";
 
 class App extends React.Component {
   componentDidMount() {
@@ -15,7 +19,12 @@ class App extends React.Component {
     console.log(this.props);
     return (
       <div className="app">
-        <Search />
+        <SearchBar />
+        {this.props.pending && <Loader />}
+        {this.props.error && <ErrorMessage message={this.props.error} />}
+        {Array.isArray(this.props.films) && this.props.films.length > 0 && (
+          <FilmsList />
+        )}
       </div>
     );
   }

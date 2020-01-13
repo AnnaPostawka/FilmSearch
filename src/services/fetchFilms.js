@@ -13,11 +13,12 @@ export default function searchFilms(title) {
         if (res.error) {
           throw res.error;
         }
+
         dispatch(fetchFilmsSuccess(res.Search));
         return res.Search;
       })
       .catch(error => {
-        dispatch(fetchFilmsError(error));
+        dispatch(fetchFilmsError(error.message));
       });
   };
 }

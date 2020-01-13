@@ -1,0 +1,15 @@
+.film-item {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1.5rem;
+}
+
+.film-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.film-year {
+  font-size: 1.6rem;
+  font-weight: 300;
+}
