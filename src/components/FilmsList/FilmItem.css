@@ -9,12 +9,11 @@
 }
 
 .film-item__title {
-  font-size: 1.6rem;
+  font-size: inherit;
   font-weight: 700;
   padding-right: 1rem;
 }
 
 .film-item__year {
-  font-size: 1.6rem;
   font-weight: 300;
 }
