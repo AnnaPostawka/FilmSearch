@@ -10,12 +10,12 @@ export default function searchFilms(title) {
     fetch(`http://www.omdbapi.com/?s=${title}&apikey=a88f46da`)
       .then(res => res.json())
       .then(res => {
-        if (res.error) {
-          throw res.error;
+        if (res.error || res.Response === "False") {
+          const error = res.error ? res.error : { message: res.Error };
+          throw error;
         }
 
         dispatch(fetchFilmsSuccess(res.Search));
-        return res.Search;
       })
       .catch(error => {
         dispatch(fetchFilmsError(error.message));

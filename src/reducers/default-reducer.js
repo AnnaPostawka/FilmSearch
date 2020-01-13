@@ -15,12 +15,14 @@ export function filmsReducer(state = initialState, action) {
     case FETCH_FILMS_PENDING:
       return {
         ...state,
-        pending: true
+        pending: true,
+        error: ""
       };
     case FETCH_FILMS_SUCCESS:
       return {
         ...state,
         pending: false,
+        error: "",
         films: action.films
       };
     case FETCH_FILMS_ERROR:
