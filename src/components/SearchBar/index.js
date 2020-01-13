@@ -26,35 +26,42 @@ class SearchBar extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1 className="heading">Film Search</h1>
-        <form onSubmit={this.onFormSubmit}>
+      <div className="search-bar">
+        <h1 className="main-heading">Film Search</h1>
+        <form className="search-form" onSubmit={this.onFormSubmit}>
           <input
-            className="input"
+            className="search-form__input"
             type="text"
             value={this.state.term}
             onChange={this.onInputChange}
+            placeholder="Search"
           ></input>
         </form>
-        <form>
-          <p>Sort results by: </p>
-          <label htmlFor="title">Title</label>
-          <input
-            type="radio"
-            name="sortBy"
-            id="title"
-            value={SORT_BY.TITLE}
-            defaultChecked
-            onChange={this.onRadioChange}
-          ></input>
-          <label htmlFor="year">Year</label>
-          <input
-            type="radio"
-            name="sortBy"
-            id="year"
-            value={SORT_BY.YEAR}
-            onChange={this.onRadioChange}
-          ></input>
+        <form className="radio-form">
+          <p className="radio-form__text">Sort results by: </p>
+          <label className="radio-form__label" htmlFor="title">
+            Title
+            <input
+              className="radio-form__input"
+              type="radio"
+              name="sortBy"
+              id="title"
+              value={SORT_BY.TITLE}
+              defaultChecked
+              onChange={this.onRadioChange}
+            ></input>
+          </label>
+          <label className="radio-form__label" htmlFor="year">
+            Year
+            <input
+              className="radio-form__input"
+              type="radio"
+              name="sortBy"
+              id="year"
+              value={SORT_BY.YEAR}
+              onChange={this.onRadioChange}
+            ></input>
+          </label>
         </form>
       </div>
     );

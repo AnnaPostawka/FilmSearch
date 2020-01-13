@@ -4,8 +4,8 @@ import "./FilmItem.css";
 const FilmItem = ({ year, title }) => {
   return (
     <div className="film-item">
-      <h2 className="film-title">{title}</h2>
-      <p className="film-year">{year}</p>
+      <h2 className="film-item__title">{title}</h2>
+      <p className="film-item__year">{year}</p>
     </div>
   );
 };

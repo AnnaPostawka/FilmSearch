@@ -13,9 +13,11 @@ class App extends React.Component {
     return (
       <div className="app">
         <SearchBar onFormSubmit="this.props.searchFilms(title)" />
-        {this.props.pending && <Loader />}
-        {!this.props.pending && !this.props.error && <FilmsList />}
-        {this.props.error && <ErrorMessage message={this.props.error} />}
+        <div className="app__content">
+          {this.props.pending && <Loader />}
+          {this.props.error && <ErrorMessage message={this.props.error} />}
+          {!this.props.pending && !this.props.error && <FilmsList />}
+        </div>
       </div>
     );
   }

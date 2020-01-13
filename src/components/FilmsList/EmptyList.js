@@ -1,5 +1,5 @@
 import React from "react";
 
 export const EmptyList = () => {
-  return <p>No results</p>;
+  return <p>No results.</p>;
 };
